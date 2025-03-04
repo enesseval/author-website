@@ -1,0 +1,59 @@
+// Proje Yapısı
+project: "Yazar Web Sayfası"
+framework: "Next.js"
+authentication: "NextAuth"
+database: "Supabase"
+
+shadcnui kullanılmalıdır.
+
+// Bileşenler
+components:
+  - name: "Ana Sayfa"
+    description: "Kendini ve hayatını anlattığın bölüm"
+    features:
+      - "Modern tasarım"
+      - "Dinamik içerik"
+
+  - name: "Kitaplar"
+    description: "Yayınlanmış kitapların listesi"
+    features:
+      - "Kitap detayları"
+      - "Satın alma linkleri"
+
+  - name: "Coming Soon"
+    description: "Yakında çıkacak projelerin tanıtımı"
+    features:
+      - "Görsel ve açıklama"
+
+  - name: "Testimonials"
+    description: "Okuyucu yorumları"
+    features:
+      - "Dinamik yorum ekleme"
+
+  - name: "Footer"
+    description: "İletişim ve sosyal medya linkleri"
+    features:
+      - "Tüm cihazlara duyarlı tasarım"
+
+// Dashboard
+dashboard:
+  description: "Tüm içerikleri dinamik olarak değiştirebileceğin yönetim paneli"
+  features:
+    - "Kullanıcı dostu arayüz"
+    - "İçerik yönetimi"
+    - "Gerçek zamanlı güncellemeler"
+
+// Tasarım
+design:
+  - "Modern ve ilgi çekici"
+  - "Tüm cihazlara uyumlu"
+
+seo:
+  title: "Yazar Adı - Resmi Web Sayfası"
+  description: "Yazarın hayatı, kitapları ve projeleri hakkında bilgi."
+  keywords: ["yazar", "kitap", "projeler", "testimonials"]
+
+performance:
+  - "Görüntü optimizasyonu"
+  - "Lazy loading"
+  - "Önbellekleme stratejileri" 
