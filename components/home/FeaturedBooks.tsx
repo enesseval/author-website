@@ -66,6 +66,46 @@ const allBooks = [
       genre: "Tarihi Roman",
       pages: 342,
    },
+   {
+      id: 7,
+      title: "Sessiz Çığlık",
+      description: "Toplumsal baskılar altında ezilen bir kadının özgürlük arayışını anlatan etkileyici bir roman.",
+      coverImage: "https://images.unsplash.com/photo-1495640388908-05fa85288e61?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
+      publishDate: "2018",
+      slug: "sessiz-ciglik",
+      genre: "Toplumsal Roman",
+      pages: 276,
+   },
+   {
+      id: 8,
+      title: "Zamanın Ötesinde",
+      description: "Farklı zaman dilimlerinde yaşayan iki insanın kesişen hayatlarını konu alan sıra dışı bir roman.",
+      coverImage: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
+      publishDate: "2020",
+      slug: "zamanin-otesinde",
+      genre: "Bilim Kurgu",
+      pages: 320,
+   },
+   {
+      id: 9,
+      title: "İstanbul'un Gölgeleri",
+      description: "İstanbul'un az bilinen tarihi mekanlarında geçen, gerilim dolu bir polisiye roman.",
+      coverImage: "https://images.unsplash.com/photo-1527979809431-ea3d5c0c01c9?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3",
+      publishDate: "2016",
+      slug: "istanbulun-golgeleri",
+      genre: "Polisiye",
+      pages: 288,
+   },
+   {
+      id: 10,
+      title: "Unutulan Zamanlar",
+      description: "Bir kasabanın üç kuşak boyunca değişimini anlatan, aile bağları ve toplumsal dönüşüm üzerine bir roman.",
+      coverImage: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+      publishDate: "2022",
+      slug: "unutulan-zamanlar",
+      genre: "Aile Romanı",
+      pages: 356,
+   },
 ];
 
 export function FeaturedBooks() {
@@ -84,9 +124,9 @@ export function FeaturedBooks() {
                   <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">Tüm eserlerim ve yayın tarihlerine göre sıralanmış kitaplarım</p>
                </div>
 
-               <div className="relative w-full mt-8">
-                  {/* Slider kontrolleri */}
-                  <div className="absolute -left-4 top-1/2 -translate-y-1/2 z-10">
+               <div className="relative w-full mt-8 px-10">
+                  {/* Slider kontrolleri - dışarıda */}
+                  <div className="absolute -left-2 top-1/2 -translate-y-1/2 z-10">
                      <Button variant="outline" size="icon" className="rounded-full bg-background/80 backdrop-blur-sm shadow-md h-10 w-10" id="prev-book">
                         <ChevronLeft className="h-6 w-6" />
                         <span className="sr-only">Önceki</span>
@@ -94,33 +134,33 @@ export function FeaturedBooks() {
                   </div>
 
                   <div className="overflow-hidden">
-                     <div className="flex gap-6 transition-transform duration-300 books-slider">
+                     <div className="flex gap-3 transition-transform duration-300 books-slider">
                         {allBooks.map((book, index) => (
-                           <div key={book.id} className="min-w-[300px] md:min-w-[350px] flex-shrink-0 animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                           <div key={book.id} className="min-w-[160px] md:min-w-[180px] flex-shrink-0 animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
                               <Card className="flex flex-col h-full book-card">
-                                 <CardHeader className="pb-0">
-                                    <div className="relative w-full h-[300px] mb-4 overflow-hidden rounded-t-lg">
+                                 <CardHeader className="pb-0 space-y-1 px-2 pt-2">
+                                    <div className="relative w-full h-[140px] mb-1 overflow-hidden rounded-t-lg">
                                        <Image src={book.coverImage} alt={book.title} fill className="object-cover transition-transform hover:scale-105 duration-500" />
-                                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                          <p className="text-white font-medium">{book.description}</p>
+                                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-2">
+                                          <p className="text-white font-medium text-[10px]">{book.description}</p>
                                        </div>
                                     </div>
-                                    <CardTitle>{book.title}</CardTitle>
-                                    <CardDescription className="flex justify-between items-center mt-2">
-                                       <span>Yayın Yılı: {book.publishDate}</span>
-                                       <span className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs">{book.genre}</span>
+                                    <CardTitle className="text-sm">{book.title}</CardTitle>
+                                    <CardDescription className="flex justify-between items-center text-[10px]">
+                                       <span>{book.publishDate}</span>
+                                       <span className="bg-primary/10 text-primary px-1.5 py-0.5 rounded-full text-[10px]">{book.genre}</span>
                                     </CardDescription>
                                  </CardHeader>
-                                 <CardContent className="flex-grow">
-                                    <p className="text-muted-foreground">{book.description}</p>
-                                    <div className="mt-4 text-sm text-muted-foreground">
-                                       <p>Sayfa Sayısı: {book.pages}</p>
+                                 <CardContent className="flex-grow pt-1 pb-1 px-2">
+                                    <p className="text-muted-foreground text-[10px] line-clamp-2">{book.description}</p>
+                                    <div className="mt-1 text-[10px] text-muted-foreground">
+                                       <p>Sayfa: {book.pages}</p>
                                     </div>
                                  </CardContent>
-                                 <CardFooter>
-                                    <Button asChild className="w-full relative overflow-hidden group">
+                                 <CardFooter className="pt-0 px-2 pb-2">
+                                    <Button asChild size="sm" variant="outline" className="w-full h-7 relative overflow-hidden group">
                                        <Link href={`/books/${book.slug}`}>
-                                          <span className="relative z-10">Detayları Gör</span>
+                                          <span className="relative z-10 text-[10px]">Detayları Gör</span>
                                           <span className="absolute inset-0 bg-primary/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
                                        </Link>
                                     </Button>
@@ -131,7 +171,7 @@ export function FeaturedBooks() {
                      </div>
                   </div>
 
-                  <div className="absolute -right-4 top-1/2 -translate-y-1/2 z-10">
+                  <div className="absolute -right-2 top-1/2 -translate-y-1/2 z-10">
                      <Button variant="outline" size="icon" className="rounded-full bg-background/80 backdrop-blur-sm shadow-md h-10 w-10" id="next-book">
                         <ChevronRight className="h-6 w-6" />
                         <span className="sr-only">Sonraki</span>
@@ -141,7 +181,7 @@ export function FeaturedBooks() {
 
                {/* Slider dots */}
                <div className="flex justify-center gap-2 mt-6">
-                  {Array.from({ length: Math.ceil(allBooks.length / 3) }).map((_, index) => (
+                  {Array.from({ length: Math.ceil(allBooks.length / 6) }).map((_, index) => (
                      <button
                         key={index}
                         className={`w-2 h-2 rounded-full bg-primary/20 transition-all duration-300 book-dot ${index === 0 ? "w-4 bg-primary" : ""}`}
@@ -160,8 +200,8 @@ export function FeaturedBooks() {
                      const prevBtn = document.getElementById('prev-book');
                      const nextBtn = document.getElementById('next-book');
                      const dots = document.querySelectorAll('.book-dot');
-                     const itemWidth = 350; // Bir öğenin genişliği
-                     const itemsPerPage = window.innerWidth < 768 ? 1 : 3; // Mobilde 1, masaüstünde 3
+                     const itemWidth = 180; // Bir öğenin genişliği
+                     const itemsPerPage = window.innerWidth < 768 ? 2 : 6; // Mobilde 2, masaüstünde 6
                      let currentIndex = 0;
                      
                      function updateSlider() {
@@ -205,7 +245,7 @@ export function FeaturedBooks() {
                      
                      // Responsive davranış için
                      window.addEventListener('resize', () => {
-                        const newItemsPerPage = window.innerWidth < 768 ? 1 : 3;
+                        const newItemsPerPage = window.innerWidth < 768 ? 2 : 6;
                         if (newItemsPerPage !== itemsPerPage) {
                            itemsPerPage = newItemsPerPage;
                            currentIndex = 0;

@@ -61,6 +61,34 @@ const testimonials = [
       content: "Gölgeler Vadisi'ni okuduğumda hayatımda ilk kez bir kitabı bitirdiğimde hemen başa dönüp tekrar okumak istedim. Büyüleyici bir dünya yaratmış.",
       avatar: "https://i.pravatar.cc/150?img=8",
    },
+   {
+      id: 9,
+      name: "Deniz Kılıç",
+      role: "Edebiyat Öğrencisi",
+      content: "Tez çalışmamda eserlerini incelediğim bir yazar. Metinlerindeki sembolik anlatım ve katmanlı yapı akademik açıdan çok zengin bir kaynak sunuyor.",
+      avatar: "https://i.pravatar.cc/150?img=9",
+   },
+   {
+      id: 10,
+      name: "Gökhan Tekin",
+      role: "Kitapçı",
+      content: "Mağazamızda en çok talep gören yazarlardan biri. Her yeni kitabı okuyucular tarafından heyecanla bekleniyor ve hızla tükeniyor.",
+      avatar: "https://i.pravatar.cc/150?img=10",
+   },
+   {
+      id: 11,
+      name: "Ceren Yılmaz",
+      role: "Edebiyat Festivali Direktörü",
+      content: "Festivalimizin en çok ilgi gören konuklarından. Okuyucularla kurduğu samimi iletişim ve derinlikli söyleşileriyle her zaman iz bırakıyor.",
+      avatar: "https://i.pravatar.cc/150?img=11",
+   },
+   {
+      id: 12,
+      name: "Mert Aydın",
+      role: "Okur",
+      content: "Son Durak romanını okuduktan sonra trenlere bakış açım tamamen değişti. Gündelik hayatın içine gizlenmiş hikayeleri görmemi sağladı.",
+      avatar: "https://i.pravatar.cc/150?img=12",
+   },
 ];
 
 export function Testimonials() {
@@ -80,9 +108,9 @@ export function Testimonials() {
                </div>
             </div>
 
-            <div className="relative w-full">
-               {/* Slider kontrolleri */}
-               <div className="absolute -left-4 top-1/2 -translate-y-1/2 z-10">
+            <div className="relative w-full px-10">
+               {/* Slider kontrolleri - dışarıda */}
+               <div className="absolute -left-2 top-1/2 -translate-y-1/2 z-10">
                   <Button variant="outline" size="icon" className="rounded-full bg-background/80 backdrop-blur-sm shadow-md h-10 w-10" id="prev-testimonial">
                      <ChevronLeft className="h-6 w-6" />
                      <span className="sr-only">Önceki</span>
@@ -90,21 +118,21 @@ export function Testimonials() {
                </div>
 
                <div className="overflow-hidden">
-                  <div className="flex gap-6 transition-transform duration-300 testimonials-slider">
+                  <div className="flex gap-3 transition-transform duration-300 testimonials-slider">
                      {testimonials.map((testimonial, index) => (
-                        <div key={testimonial.id} className="min-w-[280px] md:min-w-[300px] flex-shrink-0 animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                        <div key={testimonial.id} className="min-w-[150px] md:min-w-[160px] flex-shrink-0 animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
                            <Card className="h-full bg-background hover:shadow-lg transition-shadow duration-300">
-                              <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                                 <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                              <CardHeader className="flex flex-row items-center gap-2 pb-1 px-2 pt-2">
+                                 <div className="relative w-6 h-6 rounded-full overflow-hidden">
                                     <Image src={testimonial.avatar} alt={testimonial.name} fill className="object-cover" />
                                  </div>
-                                 <div className="grid gap-1">
-                                    <h3 className="text-lg font-medium">{testimonial.name}</h3>
-                                    <CardDescription>{testimonial.role}</CardDescription>
+                                 <div className="grid gap-0">
+                                    <h3 className="text-xs font-medium">{testimonial.name}</h3>
+                                    <CardDescription className="text-[10px]">{testimonial.role}</CardDescription>
                                  </div>
                               </CardHeader>
-                              <CardContent>
-                                 <p className="text-muted-foreground">{testimonial.content}</p>
+                              <CardContent className="px-2 pb-2 pt-0">
+                                 <p className="text-muted-foreground text-[10px] line-clamp-3">{testimonial.content}</p>
                               </CardContent>
                            </Card>
                         </div>
@@ -112,7 +140,7 @@ export function Testimonials() {
                   </div>
                </div>
 
-               <div className="absolute -right-4 top-1/2 -translate-y-1/2 z-10">
+               <div className="absolute -right-2 top-1/2 -translate-y-1/2 z-10">
                   <Button variant="outline" size="icon" className="rounded-full bg-background/80 backdrop-blur-sm shadow-md h-10 w-10" id="next-testimonial">
                      <ChevronRight className="h-6 w-6" />
                      <span className="sr-only">Sonraki</span>
@@ -122,7 +150,7 @@ export function Testimonials() {
 
             {/* Slider dots */}
             <div className="flex justify-center gap-2 mt-6">
-               {Array.from({ length: Math.ceil(testimonials.length / 4) }).map((_, index) => (
+               {Array.from({ length: Math.ceil(testimonials.length / 7) }).map((_, index) => (
                   <button
                      key={index}
                      className={`w-2 h-2 rounded-full bg-primary/20 transition-all duration-300 testimonial-dot ${index === 0 ? "w-4 bg-primary" : ""}`}
@@ -141,8 +169,8 @@ export function Testimonials() {
                   const prevBtn = document.getElementById('prev-testimonial');
                   const nextBtn = document.getElementById('next-testimonial');
                   const dots = document.querySelectorAll('.testimonial-dot');
-                  const itemWidth = 300; // Bir öğenin genişliği
-                  const itemsPerPage = window.innerWidth < 768 ? 1 : 4; // Mobilde 1, masaüstünde 4
+                  const itemWidth = 160; // Bir öğenin genişliği
+                  const itemsPerPage = window.innerWidth < 768 ? 2 : 7; // Mobilde 2, masaüstünde 7
                   let currentIndex = 0;
                   
                   function updateSlider() {
@@ -186,7 +214,7 @@ export function Testimonials() {
                   
                   // Responsive davranış için
                   window.addEventListener('resize', () => {
-                     const newItemsPerPage = window.innerWidth < 768 ? 1 : 4;
+                     const newItemsPerPage = window.innerWidth < 768 ? 2 : 7;
                      if (newItemsPerPage !== itemsPerPage) {
                         itemsPerPage = newItemsPerPage;
                         currentIndex = 0;

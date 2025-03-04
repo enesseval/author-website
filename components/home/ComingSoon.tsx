@@ -55,6 +55,38 @@ const upcomingProjects = [
       releaseDate: "Ekim 2024",
       type: "Seminer",
    },
+   {
+      id: 7,
+      title: "İstanbul Edebiyat Festivali",
+      description: "Türkiye'nin önde gelen yazarlarını ve uluslararası konukları bir araya getiren, söyleşiler, imza günleri ve atölyelerle dolu festival.",
+      image: "https://images.unsplash.com/photo-1511988617509-a57c8a288659?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3",
+      releaseDate: "Mayıs 2024",
+      type: "Festival",
+   },
+   {
+      id: 8,
+      title: "Genç Yazarlar Yarışması",
+      description: "18-25 yaş arası genç yazarların katılabileceği, kazananlara mentorluk ve yayın desteği sağlayan ulusal öykü yarışması.",
+      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+      releaseDate: "Kasım 2024",
+      type: "Yarışma",
+   },
+   {
+      id: 9,
+      title: "Yaratıcı Yazarlık Kampı",
+      description: "Doğayla iç içe bir ortamda, yoğunlaştırılmış yaratıcı yazarlık eğitimi sunan, ilham verici bir hafta sonu kampı.",
+      image: "https://images.unsplash.com/photo-1487730116645-74489c95b41b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+      releaseDate: "Haziran 2024",
+      type: "Kamp",
+   },
+   {
+      id: 10,
+      title: "Edebiyat Dünyası Mobil Uygulaması",
+      description: "Kitap önerileri, yazarlık ipuçları, edebiyat haberleri ve okuma takibi özellikleri sunan kapsamlı bir mobil uygulama.",
+      image: "https://images.unsplash.com/photo-1522159698025-071104a1ddbd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+      releaseDate: "Ağustos 2024",
+      type: "Uygulama",
+   },
 ];
 
 export function ComingSoon() {
@@ -74,9 +106,9 @@ export function ComingSoon() {
                </div>
             </div>
 
-            <div className="relative w-full">
-               {/* Slider kontrolleri */}
-               <div className="absolute -left-4 top-1/2 -translate-y-1/2 z-10">
+            <div className="relative w-full px-10">
+               {/* Slider kontrolleri - dışarıda */}
+               <div className="absolute -left-2 top-1/2 -translate-y-1/2 z-10">
                   <Button variant="outline" size="icon" className="rounded-full bg-background/80 backdrop-blur-sm shadow-md h-10 w-10" id="prev-project">
                      <ChevronLeft className="h-6 w-6" />
                      <span className="sr-only">Önceki</span>
@@ -84,24 +116,24 @@ export function ComingSoon() {
                </div>
 
                <div className="overflow-hidden">
-                  <div className="flex gap-6 transition-transform duration-300 projects-slider">
+                  <div className="flex gap-3 transition-transform duration-300 projects-slider">
                      {upcomingProjects.map((project, index) => (
-                        <div key={project.id} className="min-w-[300px] md:min-w-[350px] flex-shrink-0 animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                        <div key={project.id} className="min-w-[180px] md:min-w-[200px] flex-shrink-0 animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
                            <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                              <div className="relative w-full h-48">
+                              <div className="relative w-full h-28">
                                  <Image src={project.image} alt={project.title} fill className="object-cover" />
                                  <div className="absolute top-2 right-2">
-                                    <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm">
+                                    <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm text-[10px] px-1.5 py-0.5">
                                        {project.type}
                                     </Badge>
                                  </div>
                               </div>
-                              <CardHeader>
-                                 <CardTitle>{project.title}</CardTitle>
-                                 <CardDescription>Çıkış: {project.releaseDate}</CardDescription>
+                              <CardHeader className="px-2 py-1.5 space-y-0.5">
+                                 <CardTitle className="text-sm">{project.title}</CardTitle>
+                                 <CardDescription className="text-[10px]">Çıkış: {project.releaseDate}</CardDescription>
                               </CardHeader>
-                              <CardContent>
-                                 <p className="text-muted-foreground">{project.description}</p>
+                              <CardContent className="px-2 pb-2 pt-0">
+                                 <p className="text-muted-foreground text-[10px] line-clamp-2">{project.description}</p>
                               </CardContent>
                            </Card>
                         </div>
@@ -109,7 +141,7 @@ export function ComingSoon() {
                   </div>
                </div>
 
-               <div className="absolute -right-4 top-1/2 -translate-y-1/2 z-10">
+               <div className="absolute -right-2 top-1/2 -translate-y-1/2 z-10">
                   <Button variant="outline" size="icon" className="rounded-full bg-background/80 backdrop-blur-sm shadow-md h-10 w-10" id="next-project">
                      <ChevronRight className="h-6 w-6" />
                      <span className="sr-only">Sonraki</span>
@@ -119,7 +151,7 @@ export function ComingSoon() {
 
             {/* Slider dots */}
             <div className="flex justify-center gap-2 mt-6">
-               {Array.from({ length: Math.ceil(upcomingProjects.length / 3) }).map((_, index) => (
+               {Array.from({ length: Math.ceil(upcomingProjects.length / 6) }).map((_, index) => (
                   <button
                      key={index}
                      className={`w-2 h-2 rounded-full bg-primary/20 transition-all duration-300 project-dot ${index === 0 ? "w-4 bg-primary" : ""}`}
@@ -138,8 +170,8 @@ export function ComingSoon() {
                   const prevBtn = document.getElementById('prev-project');
                   const nextBtn = document.getElementById('next-project');
                   const dots = document.querySelectorAll('.project-dot');
-                  const itemWidth = 350; // Bir öğenin genişliği
-                  const itemsPerPage = window.innerWidth < 768 ? 1 : 3; // Mobilde 1, masaüstünde 3
+                  const itemWidth = 200; // Bir öğenin genişliği
+                  const itemsPerPage = window.innerWidth < 768 ? 2 : 6; // Mobilde 2, masaüstünde 6
                   let currentIndex = 0;
                   
                   function updateSlider() {
@@ -183,7 +215,7 @@ export function ComingSoon() {
                   
                   // Responsive davranış için
                   window.addEventListener('resize', () => {
-                     const newItemsPerPage = window.innerWidth < 768 ? 1 : 3;
+                     const newItemsPerPage = window.innerWidth < 768 ? 2 : 6;
                      if (newItemsPerPage !== itemsPerPage) {
                         itemsPerPage = newItemsPerPage;
                         currentIndex = 0;
